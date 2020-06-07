@@ -10,6 +10,7 @@ namespace Microsoft.WebApplication1.Services
     {
         public Task SendEmailAsync(string email, string subject, string messsage)
         {
+
             // TODO: wire this to a email sending service(SendGrid), say task is completed for now
             return Task.CompletedTask;
         }

@@ -1,0 +1,1 @@
+﻿//for client side javascript

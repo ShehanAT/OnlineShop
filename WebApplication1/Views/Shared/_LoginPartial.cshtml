@@ -1,6 +1,6 @@
 ﻿@if (Context.User.Identity.IsAuthenticated)
 {
-    <section name="col-md-5">
+    <section class="col-md-5">
         <div class="identity">
             <form asp-area="Identity" asp-page="/Account/Logout" method="post" id="logoutForm" class="navbar-right">
                 <section class="identity-section">
@@ -20,9 +20,9 @@
                     <a class="identity-item" asp-controller="Manage" asp-action="MyAccount">
                         <div class="identity-name identity-name--upper">My Account</div>
                     </a>
-                    <a class="identity-item" href="javascript:document.getElementById('logoutForm').submit()">
+                    <a class="identity-item logout-item" href="javascript:document.getElementById('logoutForm').submit()">
                         <div class="identity-name identity-name--upper">Log Out</div>
-                        <img class="identity-image" src="~/images/logout.png" />
+                        <img class="identity-image logout-logo" src="~/images/logout.png" />
                     </a>
                 </section>
             </form>

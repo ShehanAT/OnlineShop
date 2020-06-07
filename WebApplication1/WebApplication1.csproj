@@ -82,14 +82,28 @@
 
   <ItemGroup>
     <Folder Include="wwwRoot\css\basket\" />
-    <Folder Include="wwwRoot\js\" />
     <Folder Include="wwwRoot\fonts\" />
     <Folder Include="wwwRoot\images\" />
+    <Folder Include="wwwRoot\lib\jquery\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Pages\Basket\Checkout.cshtml" />
-    <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Views\Manage\_ValidationScriptsPartial.cshtml" />
+    <None Include="wwwRoot\lib\bootstrap\css\bootstrap-grid.css.map" />
+    <None Include="wwwRoot\lib\bootstrap\css\bootstrap-grid.min.css.map" />
+    <None Include="wwwRoot\lib\bootstrap\css\bootstrap-reboot.css.map" />
+    <None Include="wwwRoot\lib\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <None Include="wwwRoot\lib\bootstrap\css\bootstrap.css.map" />
+    <None Include="wwwRoot\lib\bootstrap\css\bootstrap.min.css.map" />
+    <None Include="wwwRoot\lib\bootstrap\js\bootstrap.bundle.js" />
+    <None Include="wwwRoot\lib\bootstrap\js\bootstrap.bundle.js.map" />
+    <None Include="wwwRoot\lib\bootstrap\js\bootstrap.bundle.min.js" />
+    <None Include="wwwRoot\lib\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwRoot\lib\bootstrap\js\bootstrap.js" />
+    <None Include="wwwRoot\lib\bootstrap\js\bootstrap.js.map" />
+    <None Include="wwwRoot\lib\bootstrap\js\bootstrap.min.js" />
+    <None Include="wwwRoot\lib\bootstrap\js\bootstrap.min.js.map" />
   </ItemGroup>
 
   <ItemGroup>
