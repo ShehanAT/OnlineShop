@@ -1,0 +1,75 @@
+﻿@model OrderViewModel 
+
+@{ 
+    ViewData["Title"] = "My Order History";
+} 
+
+@{ 
+    ViewData["Title"] = "Order Details";
+}
+
+<div class="order-details">
+    <div class="container">
+        <section class="order-detail-section">
+            <article class="orders-detail-titles">
+                <section class="order-detail-title">Order Number</section>
+                <section class="order-detail-title">Date</section>
+                <section class="order-detail-title">Total</section>
+                <section class="order-detail-title">Status</section>
+            </article>
+
+            <article class="orders-detail-items">
+                <section class="order-detail-title">@Model.buyerId</section>
+                <section class="order-detail-title">@Model.OrderNumber</section>
+                <section class="order-detail-title">@Model.OrderDate</section>
+                <section class="order-detail-title">@Model.Total.ToString("N2")</section>
+                <section class="order-detail-title">@Model.Status</section>
+            </article>
+        </section>
+        <section class="orders-detail-section">
+            <article class="orders-detail-titles">
+                <section class="orders-detail-title">Shipping Address</section>
+            </article>
+            <article class="orders-detail-item">
+                <section class="orders-detail-item">@Model.ShippingAddress.Street</section>
+            </article>
+            <article class="orders-detail-item">
+                <section class="orders-detail-item">@Model.ShippingAddress.State</section>
+            </article>
+            <article class="orders-detail-item">
+                <section class="orders-detail-item">@Model.ShippingAddress.Country</section>
+            </article>
+        </section>
+
+        <section class="orders-detail-section">
+            <article class="orders-detail-titles">
+                <section class="orders-detail-title">Order Details</section>
+            @for(int i = 0; i < Model.OrderItems.Count; i++)
+            {
+                var item = Model.OrderItems[i];
+                <article class="orders-detail-items">
+                    <section class="orders-detail-item">
+                        <img class="orders-detail-image" src="@item.PictureUrl" />
+                    </section>
+                    <section class="orders-detail-item">@item.ProductName</section>
+                    <section class="orders-detail-item">@item.UnitPrice.ToString("N2")</section>
+                    <section class="orders-detail-item">@item.Units</section>
+                    <section class="orders-detail-item">@Math.Round(item.Units * item.UnitPrice, 2).ToString("N2")</section>
+                </article>
+            }
+        </section>
+
+        <section class="orders-detail-section orders-detail-section--right">
+            <article class="orders-detail-titles basket-title--clean row">
+                <section class="order-detail-section-title"></section>
+                <section class="order-detail-section-title">TOTAL</section>
+            </article>
+
+            <article class="orders-detail-items row">
+                <section class="order-detail-item"></section>
+                <section class="orders-detail-item orders-detail-item--mark">@Model.Total.ToString("N2")</section>
+            </article>
+        </section>
+
+    </div>
+</div>

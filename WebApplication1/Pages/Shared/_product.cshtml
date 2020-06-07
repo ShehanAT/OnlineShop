@@ -1,0 +1,19 @@
+﻿@model CatalogItemViewModel
+
+    <form asp-page="/Basket/Index" method="post">
+        <img class="catalog-thumbnail" src="@Model.pictureUri" />
+        <input class="catalog-button" type="submit" value="ADD TO BASKET" />
+
+        <div class="catalog-name">
+            <span>@Model.name</span>
+        </div>
+
+        <div class="catalog-price">
+            <span>@Model.price.ToString("N2")</span>
+        </div>
+        <input type="hidden" asp-for="@Model.id" name="id" />
+        <input type="hidden" asp-for="@Model.name" name="name" />
+        <input type="hidden" asp-for="@Model.pictureUri" name="pictureUri" />
+        <input type="hidden" asp-for="@Model.price" name="price" />
+
+    </form>

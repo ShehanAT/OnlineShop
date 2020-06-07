@@ -1,0 +1,14 @@
+﻿@model BasketComponentViewModel
+@{ 
+    ViewData["Title"] = "My Basket";
+}
+<a class="app-basketstatus" asp-page="/Basket/Index">
+    <div class="app-basketstatus-image">
+        <img src="~/images/cart.png" />
+    </div>
+    <div class="app-basketstatus-badge">
+        @Model.itemCount
+    </div>
+
+
+</a>

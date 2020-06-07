@@ -1,0 +1,96 @@
+﻿@page "{handler?}"
+@model Microsoft.WebApplication1.Pages.Basket.MainIndexModel
+@{
+    ViewData["Title"] = "Basket";
+
+}
+@* "?" is mandatory for asp-page post handler to work *@
+
+    <div class="container">
+        @if (Model.basketModel.Items.Any())
+        {
+            @*If basketModel contains any basketItems run this block*@
+            @*asp-page="/Basket/Checkout"*@
+            <form method="post">
+                <article class="basket-titles row">
+                    <section class="basket-titles">Product</section>
+                    <section class="basket-titles"></section>
+                    <section class="basket-titles">Price</section>
+                    <section class="basket-titles">Quantity</section>
+                    <section class="basket-titles">Cost</section>
+                </article>
+                <div class="catalog-items row">
+                    @for (int i = 0; i < Model.basketModel.Items.Count; i++)
+                    {
+                        var basketItem = Model.basketModel.Items[i];
+                        <article class="basket-items row">
+                            <div>
+                                <section class="basket-item--middle basket-item">
+                                    <img class="basket-image" src="@basketItem.PictureUri" />
+                                </section>
+                                <section class="basket-item--middle basket-item">
+                                    @basketItem.ProductName
+                                    <section class="basket-item--middle basket-item">
+                                        @basketItem.UnitPrice.ToString("N2")
+                                    </section>
+                                </section>
+                                <section class="basket-item--middle basket-item">
+                                    @* hidden input field which holds catalog item id  *@
+                                    <input type="hidden" name="@("Items["+i+"].Key")" value="@basketItem.CatalogItemId" />
+                                    <input type="number" name="@("Items["+i+"].Value")" value="@basketItem.Quantity" />
+                                </section>
+                                <section class="basket-item basket-item--middle basket-item--mark">@Math.Round(basketItem.Quantity * basketItem.UnitPrice).ToString("N2")</section>
+                            </div>
+                        </article>
+                    }
+                    <div class="container">
+                        <article class="basket-titles basket-titles--clean row">
+                            <section class="basket-title"></section>
+                            <section class="basket-title">Total</section>
+                        </article>
+                        <article class="basket-items row">
+                            <section class="basket-item"></section>
+                            @* Get the total price of all basket items in basket*@
+                            <section class="basket-item basket-item--mark">@Model.basketModel.Total().ToString("N2")</section>
+                        </article>
+
+                    </div>
+                    <div class="row">
+                        <section class="basket-item">
+                            <a asp-page="/Index" class="basket-checkout">{ Continue Shopping }</a>
+                        </section>
+                        <section class="basket-item">
+                            <button class="btn basket-checkout" name="updatebutton" type="submit" asp-page-handler="Update">{ Update }</button>
+                            @*dictionary containing 1 element(basket id)*@
+                            @{
+                                var data = new Dictionary<string, string>
+                                                                                            {
+                                { ApplicationConstants.BASKET_ID, Model.basketModel.Id.ToString()},
+                            };
+                            }
+                            @*send dictionary as route data to request handler*@
+
+                            <input type="submit"
+                                   asp-controller="Order"
+                                   asp-action="Checkout"
+                                   class="btn basket-checkout"
+                                   asp-all-route-data=data
+                                   value="{ Checkout }"
+                                   name="action" />
+                        </section>
+                    </div>
+                </div>
+
+            </form>
+        }
+        else
+        {
+            <h4 class="catalogi-items row">
+                Basket is empty...
+            </h4>
+            <section class="basket-item">
+                <a asp-page="/Index" class="basket-checkout">{ Continue Shopping .. }</a>
+            </section>
+        }
+
+    </div>

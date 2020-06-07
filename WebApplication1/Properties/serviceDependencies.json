@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "Data_Source=(localdb)\\MSSQLLocalDB;Initial_Catalog=master;Integrated_Security=True;Connect_Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+    },
+    "mssql3": {
+      "type": "mssql",
+      "connectionId": "DefaultConnection",
+      "suggestion": "true",
+      "ignored": "true"
+    }
+  }
+}

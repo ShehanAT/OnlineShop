@@ -1,0 +1,42 @@
+﻿@page
+@{
+    ViewData["Title"] = "Catalog";
+    @model MainIndexModel
+}
+
+<h1>Welcome to Shehan's Online Store Application</h1>
+<section class="catalog-filters">
+    <div class="container">
+        <form method="get">
+            <label class="catalog-label" data-title="brand">
+                <select asp-for="@Model.CatalogModel.brandFilterApplied" asp-items="@Model.CatalogModel.brands" class="catalog-filter">
+                </select>
+            </label>
+            <label class="catalog-label" data-title="type">
+                <select asp-for="@Model.CatalogModel.typeFilterApplied" asp-items="@Model.CatalogModel.types" class="catalog-filter">
+                </select>
+            </label>
+        </form>
+    </div>
+</section>
+<div class="container">
+    @if (Model.CatalogModel.catalogItems.Any())
+    {
+        @*     <partial name="_pagination" for="CatalogModel.paginationInfo"></partial>*@
+        <div class="catalog-items row">
+            @foreach (var catalogItem in Model.CatalogModel.catalogItems)
+            {
+                <div class="catalog-item col-md-4">
+                    <partial name="_product" for="@catalogItem" />
+                </div>
+            }
+        </div>
+        @*     <partial name="_pagination" for="CatalogModel.paginationInfo" ></partial>*@
+    }
+    else
+    {
+        <div class="catalog-items row">
+            There are no results that match your search
+        </div>
+    }
+</div>

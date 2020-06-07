@@ -1,0 +1,29 @@
+﻿@model PaginationInfoViewModel
+
+<div class="pager">
+    <div class="container-fluid">
+        <article class="pager-wrapper-row">
+            <nav>
+                <div class="col-md-2">
+                    <a class="pager-item-left page-item--navigable pager-item @Model.previous"
+                       id="Previous" asp-route-pageid="@(Model.actualPage - 1)" aria-label="Previous">
+                        Previous 
+                    </a>
+                </div>
+                <div class="col-md-8">
+                    <span class="pager-item">
+                        Showing @Model.itemsPerPage of @Model.totalItems products - Page @(Model.actualPage + 1) - @Model.totalPages
+                    </span>
+                </div>
+
+                <div class="col-md-2">
+                    <a class="page-item pager-item--navigable pager-item @Model.next"
+                       id="Next" asp-route-pageid="@(Model.actualPage + 1)" aria-label="Next">
+                        Next 
+                    </a>
+
+                </div>
+            </nav>
+        </article>
+    </div>
+</div> 

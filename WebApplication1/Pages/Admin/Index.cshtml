@@ -1,0 +1,23 @@
+﻿@page
+@{ 
+    ViewData["Title"] = "Admin - Catalog";
+    @model Microsoft.WebApplication1.Page.Admin.AdminIndexModel
+}
+<section class="catalog-hero">
+    <div class="container">
+        <img class="catalog-title" src="~/images/logo.png" />
+    </div>
+</section>
+<section class="catalog-filter">
+    <div class="container">
+        <form method="get">
+            <label class="catalog-label" data-title="brand">
+                <select asp-for="@Model.CatalogModel.brandFilterApplied" asp-items="@Model.CatalogModel.brands" class="catalog-filter"></select>
+            </label>
+            <label class="catalog-label" data-title="type">
+                <select asp-for="@Model.CatalogModel.typeFilterApplied" asp-items="@Model.CatalogModel.types" class="catalog-filter"></select>
+            </label>
+            <input class="catalog-send" type="image" src="~/images/arrow-right.png" />
+        </form>
+    </div>
+</section>
